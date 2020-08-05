@@ -1,38 +1,199 @@
-.App {
-  text-align: center;
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  width: 800px;
+  height: 100vh;
+  margin: auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  padding-top: 50px;
+}
+
+.header {
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  height: 40px;
+  width: 60%;
+  margin-bottom: 16px;
+}
+
+.header__input {
+  width: 260px;
+  min-height: 25px;
+  padding: 0 5px;
+  margin-right: 12px;
+}
+
+.header__button {
+  height: 32px;
+  background-color: #9de76b;
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+  margin-left: 18px;
+}
+
+.todos-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.todo {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 8px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 60%;
+  min-height: 50px;
+  border: 1px solid grey;
+  border-radius: 3px;
+}
+
+.todo__radio {
+  display: none;
+}
+
+.todo__radio + label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 20px;
+  margin-left: 15px;
+  background-color: darkgrey;
+  border-radius: 3px;
+}
+
+.todo__radio + label::before {
+  content: "";
+  height: 20px;
+  width: 20px;
+}
+
+.todo__radio:checked + label {
+  background-color: #fff;
+}
+
+.todo__radio:checked + label::before {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  content: "";
+  text-align: center;
+  height: 20px;
+  width: 20px;
+  font-family: "FontAwesome";
+  font-size: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.todo__text {
+  margin-right: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  word-break: break-all;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.todo__delete-button {
+  margin-left: 40px;
+  margin-right: 10px;
+  height: 32px;
+  background-color: #e7796b;
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+}
+
+.todo__edit-button {
+  height: 32px;
+  background-color: #e7d46b;
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+}
+
+.todo_done {
+  background-color: #6bcee7;
+  font-style: italic;
+}
+
+.text_lined {
+  text-decoration: line-through;
+}
+
+.wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 250px;
+  margin-right: 72px;
+}
+
+.edit {
+  height: 30px;
+  padding: 0 5px;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    max-width: 380px;
   }
-  to {
-    transform: rotate(360deg);
+  .header {
+    width: 95%;
+    padding-left: 16px;
+  }
+  .header__input {
+    width: 150px;
+    height: 30px;
+  }
+  .header__button {
+    margin-left: 1px;
+  }
+  .todo {
+    width: 90%;
+  }
+  .todo__delete-button {
+    margin-left: 10px;
+  }
+  .wrap {
+    width: 200px;
+    margin-right: 14px;
+  }
+  .edit {
+    width: 120px;
   }
 }
