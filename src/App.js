@@ -3,26 +3,29 @@ import Todolist from "./components/Todolist.js";
 
 export default class App extends Component {
   state = {
-    todos: [],
+    todosReact: [],
     textInput: "",
   };
 
   componentDidMount() {
-    if (window.localStorage.getItem("todos")) {
+    if (window.localStorage.getItem("todosReact")) {
       this.setState({
-        todos: JSON.parse(window.localStorage.getItem("todos")),
+        todosReact: JSON.parse(window.localStorage.getItem("todosReact")),
       });
     }
   }
 
   componentDidUpdate() {
-    window.localStorage.setItem("todos", JSON.stringify(this.state.todos));
+    window.localStorage.setItem(
+      "todosReact",
+      JSON.stringify(this.state.todosReact)
+    );
   }
 
   handleChange = (id) => {
     this.setState({
-      todos: [
-        ...this.state.todos.map((todo) => {
+      todosReact: [
+        ...this.state.todosReact.map((todo) => {
           if (todo.id === id) {
             todo.checked = !todo.checked;
           }
@@ -34,8 +37,8 @@ export default class App extends Component {
 
   handleDelete = (id) => {
     this.setState({
-      todos: [
-        ...this.state.todos.filter((todo) => {
+      todosReact: [
+        ...this.state.todosReact.filter((todo) => {
           return todo.id !== id;
         }),
       ],
@@ -44,8 +47,8 @@ export default class App extends Component {
 
   handleEdit = (id) => {
     this.setState({
-      todos: [
-        ...this.state.todos.map((todo) => {
+      todosReact: [
+        ...this.state.todosReact.map((todo) => {
           if (todo.id === id) {
             todo.edit = true;
           }
@@ -57,8 +60,8 @@ export default class App extends Component {
 
   handleConfirm = (id, editText) => {
     this.setState({
-      todos: [
-        ...this.state.todos.map((todo) => {
+      todosReact: [
+        ...this.state.todosReact.map((todo) => {
           if (todo.id === id) {
             todo.text = editText;
             todo.edit = false;
@@ -72,12 +75,15 @@ export default class App extends Component {
   handleAdd = (e) => {
     e.preventDefault();
     const todo = {
-      id: this.state.todos.length === 0 ? 0 : this.state.todos[0].id + 1,
+      id:
+        this.state.todosReact.length === 0
+          ? 0
+          : this.state.todosReact[0].id + 1,
       text: this.state.textInput,
       checked: false,
     };
     this.setState({
-      todos: [todo, ...this.state.todos],
+      todosReact: [todo, ...this.state.todosReact],
       textInput: "",
     });
   };
@@ -105,9 +111,9 @@ export default class App extends Component {
             </button>
           </form>
         </header>
-        <section className="todos-container">
+        <section className="todosReact-container">
           <Todolist
-            todos={this.state.todos}
+            todosReact={this.state.todosReact}
             handleChange={this.handleChange}
             handleDelete={this.handleDelete}
             handleEdit={this.handleEdit}

@@ -4,13 +4,13 @@ import Todo from "./Todo.js";
 export default class Todolist extends Component {
   render() {
     const {
-      todos,
+      todosReact,
       handleDelete,
       handleChange,
       handleEdit,
       handleConfirm,
     } = this.props;
-    return todos.map((todo) => (
+    return todosReact.map((todo) => (
       <Todo
         key={todo.id}
         todo={todo}
